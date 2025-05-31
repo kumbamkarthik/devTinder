@@ -2,10 +2,18 @@ const express = require('express');
 
 const app = express(); 
 
-app.use((req,res)=>{
-    res.send('Hello from server');
+//This will only handle get call to /user
+app.get("/user",(req,res)=>{
+    res.send({firstName: "Karthik", lastName: "Kumbam"});
 })
-app.listen(3000,() => {
-    console.log('Server is running on port 3000');
-});
 
+app.post("/user",(req,res)=>{
+    res.send("Data sucessfully saved to database");
+})
+app.delete("/user",(req,res)=>{
+    res.send("Data sucessfully deleted from database");
+}
+);
+app.listen(7777,() => {
+    console.log('Server is running on the port 7777');
+});
